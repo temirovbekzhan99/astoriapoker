@@ -2,128 +2,115 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Быстрый заработок</title>
+<title>Astoria Poker</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
 body {
-  background: linear-gradient(180deg, #020617, #0f172a);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
   color: #fff;
   text-align: center;
-  overflow-x: hidden;
 }
 
-/* Анимация появления */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s forwards;
+/* Фон */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #111, #000);
+  z-index: -1;
 }
 
-.fade:nth-child(2) { animation-delay: .3s; }
-.fade:nth-child(3) { animation-delay: .6s; }
-.fade:nth-child(4) { animation-delay: .9s; }
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Контейнер */
 .container {
   padding: 20px;
   max-width: 420px;
   margin: auto;
 }
 
+/* Лого */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: gold;
+}
+
 /* Заголовок */
 h1 {
-  font-size: 26px;
+  font-size: 28px;
   margin-top: 40px;
   line-height: 1.3;
 }
 
 /* Подзаголовок */
 p {
-  margin-top: 15px;
   opacity: 0.85;
-  font-size: 15px;
+  margin-top: 15px;
 }
 
 /* Кнопка */
 .btn {
   display: block;
-  margin-top: 30px;
+  margin: 30px 0;
   padding: 16px;
   border-radius: 12px;
-  background: linear-gradient(90deg, #22c55e, #4ade80);
+  background: linear-gradient(45deg, #ffd700, #ffae00);
   color: #000;
   font-weight: bold;
   text-decoration: none;
   font-size: 18px;
-  transition: 0.2s;
-  box-shadow: 0 10px 25px rgba(34,197,94,0.4);
-}
-
-/* Пульсация */
-.btn {
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
   animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.07); }
   100% { transform: scale(1); }
 }
 
 /* Таймер */
 .timer {
-  margin-top: 20px;
-  color: #f87171;
+  color: #ff4444;
   font-weight: bold;
-  font-size: 16px;
+  margin-top: 10px;
 }
 
-/* Карточки отзывов */
-.reviews {
-  margin-top: 30px;
-  text-align: left;
-}
-
-.review {
+/* Фейковые выигрыши */
+.win {
   background: rgba(255,255,255,0.05);
-  padding: 12px;
+  padding: 10px;
+  margin-top: 10px;
   border-radius: 10px;
-  margin-bottom: 10px;
   font-size: 14px;
-  animation: fadeIn 1s forwards;
+  text-align: left;
+  animation: fadeIn 1s;
 }
 
-/* Нижний фиксированный CTA */
-.fixed-cta {
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Нижняя кнопка */
+.bottom {
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
-  background: #020617;
   padding: 10px;
+  background: #000;
 }
 
-.fixed-cta a {
+.bottom a {
   display: block;
-  background: #22c55e;
-  color: #000;
+  background: #ffd700;
   padding: 14px;
   border-radius: 10px;
+  color: #000;
   font-weight: bold;
   text-decoration: none;
 }
@@ -133,33 +120,32 @@ p {
 
 <body>
 
+<div class="bg"></div>
+
 <div class="container">
 
-  <h1 class="fade">Зарабатывай прямо с телефона</h1>
+  <div class="logo">ASTORIA POKER</div>
 
-  <p class="fade">Простая игра, реальные выплаты каждый день</p>
+  <h1>Зарабатывай на игре</h1>
+  <p>Играй онлайн и выводи реальные деньги каждый день</p>
 
-  <a href="#" class="btn fade">НАЧАТЬ СЕЙЧАС</a>
+  <a href="#" class="btn">ИГРАТЬ СЕЙЧАС</a>
 
-  <div class="timer fade" id="timer">
-    Осталось мест: 9
+  <div class="timer" id="timer">
+    Осталось мест: 8
   </div>
 
-  <div class="reviews fade">
-    <div class="review">Азамат: заработал 18 500 сом за 3 дня 😳</div>
-    <div class="review">Нурсултан: вывел деньги в тот же день 🔥</div>
-    <div class="review">Данияр: сначала сомневался, но реально платит</div>
-  </div>
+  <div id="wins"></div>
 
 </div>
 
-<div class="fixed-cta">
+<div class="bottom">
   <a href="#">ПОЛУЧИТЬ ДОСТУП</a>
 </div>
 
 <script>
-// уменьшение мест
-let spots = 9;
+// таймер мест
+let spots = 8;
 setInterval(() => {
   if (spots > 2) {
     spots--;
@@ -167,13 +153,25 @@ setInterval(() => {
   }
 }, 4000);
 
-// автоскролл (эффект вовлечения)
-setTimeout(() => {
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth'
-  });
-}, 5000);
+// фейковые выигрыши
+const names = ["Азамат", "Руслан", "Данияр", "Нурсултан", "Илья"];
+const amounts = ["12 000 сом", "8 500 сом", "15 200 сом", "6 700 сом"];
+
+setInterval(() => {
+  const name = names[Math.floor(Math.random() * names.length)];
+  const amount = amounts[Math.floor(Math.random() * amounts.length)];
+
+  const div = document.createElement("div");
+  div.className = "win";
+  div.innerText = name + " выиграл " + amount;
+
+  const wins = document.getElementById("wins");
+  wins.prepend(div);
+
+  if (wins.children.length > 4) {
+    wins.removeChild(wins.lastChild);
+  }
+}, 3000);
 </script>
 
 </body>
