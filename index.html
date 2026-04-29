@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Быстрый заработок</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #020617, #0f172a);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Анимация появления */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+.fade:nth-child(2) { animation-delay: .3s; }
+.fade:nth-child(3) { animation-delay: .6s; }
+.fade:nth-child(4) { animation-delay: .9s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  padding: 20px;
+  max-width: 420px;
+  margin: auto;
+}
+
+/* Заголовок */
+h1 {
+  font-size: 26px;
+  margin-top: 40px;
+  line-height: 1.3;
+}
+
+/* Подзаголовок */
+p {
+  margin-top: 15px;
+  opacity: 0.85;
+  font-size: 15px;
+}
+
+/* Кнопка */
+.btn {
+  display: block;
+  margin-top: 30px;
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.2s;
+  box-shadow: 0 10px 25px rgba(34,197,94,0.4);
+}
+
+/* Пульсация */
+.btn {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Таймер */
+.timer {
+  margin-top: 20px;
+  color: #f87171;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Карточки отзывов */
+.reviews {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.review {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  animation: fadeIn 1s forwards;
+}
+
+/* Нижний фиксированный CTA */
+.fixed-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #020617;
+  padding: 10px;
+}
+
+.fixed-cta a {
+  display: block;
+  background: #22c55e;
+  color: #000;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 class="fade">Зарабатывай прямо с телефона</h1>
+
+  <p class="fade">Простая игра, реальные выплаты каждый день</p>
+
+  <a href="#" class="btn fade">НАЧАТЬ СЕЙЧАС</a>
+
+  <div class="timer fade" id="timer">
+    Осталось мест: 9
+  </div>
+
+  <div class="reviews fade">
+    <div class="review">Азамат: заработал 18 500 сом за 3 дня 😳</div>
+    <div class="review">Нурсултан: вывел деньги в тот же день 🔥</div>
+    <div class="review">Данияр: сначала сомневался, но реально платит</div>
+  </div>
+
+</div>
+
+<div class="fixed-cta">
+  <a href="#">ПОЛУЧИТЬ ДОСТУП</a>
+</div>
+
+<script>
+// уменьшение мест
+let spots = 9;
+setInterval(() => {
+  if (spots > 2) {
+    spots--;
+    document.getElementById("timer").innerText = "Осталось мест: " + spots;
+  }
+}, 4000);
+
+// автоскролл (эффект вовлечения)
+setTimeout(() => {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  });
+}, 5000);
+</script>
+
+</body>
+</html>
