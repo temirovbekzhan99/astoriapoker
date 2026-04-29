@@ -4,115 +4,115 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Astoria Poker</title>
+<title>Astoria Poker Club</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
+  font-family: -apple-system, Arial, sans-serif;
+  background: #020617;
   color: #fff;
-  text-align: center;
 }
 
-/* Фон */
+/* фон */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top, #111, #000);
+  background: radial-gradient(circle at top, #0f172a, #020617);
   z-index: -1;
 }
 
-/* Контейнер */
+/* контейнер */
 .container {
-  padding: 20px;
   max-width: 420px;
   margin: auto;
+  padding: 20px;
+  text-align: center;
 }
 
-/* Лого */
+/* логотип */
 .logo {
-  font-size: 22px;
   font-weight: bold;
-  margin-top: 20px;
-  color: gold;
+  font-size: 20px;
+  color: #22c55e;
+  margin-top: 10px;
 }
 
-/* Заголовок */
+/* заголовок */
 h1 {
-  font-size: 28px;
   margin-top: 40px;
+  font-size: 26px;
   line-height: 1.3;
 }
 
-/* Подзаголовок */
+/* текст */
 p {
-  opacity: 0.85;
   margin-top: 15px;
+  opacity: 0.85;
 }
 
-/* Кнопка */
+/* кнопка */
 .btn {
   display: block;
-  margin: 30px 0;
+  margin-top: 30px;
   padding: 16px;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #ffd700, #ffae00);
+  border-radius: 14px;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
   color: #000;
   font-weight: bold;
   text-decoration: none;
   font-size: 18px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.6);
-  animation: pulse 1.5s infinite;
+  box-shadow: 0 10px 30px rgba(34,197,94,0.4);
+  transition: 0.2s;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.07); }
-  100% { transform: scale(1); }
+.btn:hover {
+  transform: scale(1.05);
 }
 
-/* Таймер */
-.timer {
-  color: #ff4444;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Фейковые выигрыши */
-.win {
-  background: rgba(255,255,255,0.05);
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  font-size: 14px;
+/* преимущества */
+.features {
+  margin-top: 30px;
   text-align: left;
-  animation: fadeIn 1s;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.feature {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-/* Нижняя кнопка */
-.bottom {
+/* отзывы */
+.reviews {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.review {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* фикс кнопка */
+.fixed {
   position: fixed;
   bottom: 0;
   width: 100%;
+  background: #020617;
   padding: 10px;
-  background: #000;
 }
 
-.bottom a {
+.fixed a {
   display: block;
-  background: #ffd700;
+  background: #22c55e;
+  color: #000;
   padding: 14px;
   border-radius: 10px;
-  color: #000;
-  font-weight: bold;
   text-decoration: none;
+  font-weight: bold;
 }
 
 </style>
@@ -124,55 +124,30 @@ p {
 
 <div class="container">
 
-  <div class="logo">ASTORIA POKER</div>
+  <div class="logo">ASTORIA CLUB</div>
 
-  <h1>Зарабатывай на игре</h1>
-  <p>Играй онлайн и выводи реальные деньги каждый день</p>
+  <h1>Играй в покер онлайн с комфортом</h1>
+  <p>Присоединяйся к клубу и играй в любое время с удобным приложением</p>
 
-  <a href="#" class="btn">ИГРАТЬ СЕЙЧАС</a>
+  <a href="#" class="btn">ПОЛУЧИТЬ ДОСТУП</a>
 
-  <div class="timer" id="timer">
-    Осталось мест: 8
+  <div class="features">
+    <div class="feature">🎮 Игра 24/7 без ограничений</div>
+    <div class="feature">⚡ Быстрый вход и стабильная работа</div>
+    <div class="feature">📱 Удобно с телефона</div>
+    <div class="feature">👥 Активное сообщество игроков</div>
   </div>
 
-  <div id="wins"></div>
+  <div class="reviews">
+    <div class="review">Азамат: удобный клуб, играю каждый день</div>
+    <div class="review">Данияр: всё стабильно работает, без лагов</div>
+  </div>
 
 </div>
 
-<div class="bottom">
-  <a href="#">ПОЛУЧИТЬ ДОСТУП</a>
+<div class="fixed">
+  <a href="#">ВСТУПИТЬ В КЛУБ</a>
 </div>
-
-<script>
-// таймер мест
-let spots = 8;
-setInterval(() => {
-  if (spots > 2) {
-    spots--;
-    document.getElementById("timer").innerText = "Осталось мест: " + spots;
-  }
-}, 4000);
-
-// фейковые выигрыши
-const names = ["Азамат", "Руслан", "Данияр", "Нурсултан", "Илья"];
-const amounts = ["12 000 сом", "8 500 сом", "15 200 сом", "6 700 сом"];
-
-setInterval(() => {
-  const name = names[Math.floor(Math.random() * names.length)];
-  const amount = amounts[Math.floor(Math.random() * amounts.length)];
-
-  const div = document.createElement("div");
-  div.className = "win";
-  div.innerText = name + " выиграл " + amount;
-
-  const wins = document.getElementById("wins");
-  wins.prepend(div);
-
-  if (wins.children.length > 4) {
-    wins.removeChild(wins.lastChild);
-  }
-}, 3000);
-</script>
 
 </body>
 </html>
